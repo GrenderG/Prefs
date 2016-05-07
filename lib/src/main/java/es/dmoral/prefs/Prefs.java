@@ -2,7 +2,6 @@ package es.dmoral.prefs;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
 
 /**
  * Created by grender on 7/05/16.
@@ -22,7 +21,7 @@ public class Prefs {
     private static final long DEFAULT_LONG_VALUE = -1L;
     private static final boolean DEFAULT_BOOLEAN_VALUE = false;
 
-    private Prefs(@NonNull Context context){
+    private Prefs(Context context){
         if (sharedPreferences == null) {
             sharedPreferences = context.getApplicationContext().getSharedPreferences(
                     PREFERENCES_NAME,
@@ -32,7 +31,7 @@ public class Prefs {
         }
     }
 
-    public static Prefs with(@NonNull Context context) {
+    public static Prefs with(Context context) {
         if (prefsInstance == null) {
             prefsInstance = new Prefs(context);
         }
