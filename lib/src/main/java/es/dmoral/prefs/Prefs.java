@@ -11,7 +11,8 @@ public class Prefs {
 
     private static SharedPreferences sharedPreferences;
     private static Prefs prefsInstance;
-    private static String preferencesName = "PREFERENCES_";
+
+    private static final String preferencesName = "preferences";
 
     private static final String DEFAULT_STRING_VALUE = "";
     private static final int DEFAULT_INT_VALUE = -1;
@@ -22,7 +23,6 @@ public class Prefs {
 
     private Prefs(@NonNull Context context){
         if (sharedPreferences == null) {
-            preferencesName += context.getApplicationContext().getPackageName();
             sharedPreferences = context.getApplicationContext().getSharedPreferences(
                     preferencesName,
                     Context.MODE_PRIVATE
