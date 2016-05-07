@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.NonNull;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -218,6 +219,7 @@ public class Prefs {
      * @param key
      * @param value
      */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void putStringSet(final String key, final Set<String> value) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             sharedPreferences.edit().putStringSet(key, value).apply();
@@ -247,6 +249,40 @@ public class Prefs {
             // Remove any remaining values
             remove(key + "[" + i + "]");
         }
+    }
+
+    /**
+     * @param key
+     * @param defValue
+     * @return Returns the String Set with HoneyComb compatibility
+     */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public Set<String> getStringSet(final String key, final Set<String> defValue) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            return sharedPreferences.getStringSet(key, defValue);
+        } else {
+            // Workaround for pre-HC's missing getStringSet
+            return getOrderedStringSet(key, defValue);
+        }
+    }
+
+    /**
+     * @param key
+     * @param defValue
+     * @return Returns the ordered String Set
+     */
+    public Set<String> getOrderedStringSet(String key, final Set<String> defValue) {
+        if (contains(key + LENGTH)) {
+            LinkedHashSet<String> set = new LinkedHashSet<>();
+            int stringSetLength = readInt(key + LENGTH);
+            if (stringSetLength >= 0) {
+                for (int i = 0; i < stringSetLength; i++) {
+                    set.add(read(key + "[" + i + "]"));
+                }
+            }
+            return set;
+        }
+        return defValue;
     }
 
     // end related methods
