@@ -45,5 +45,6 @@ You can also specify a custom name for the preferences' name:
 And force the re-instantiation of the Prefs instance:
 ``` java
   Prefs.with(yourContext, true).readInt(YOUR_KEY_VALUE);
+  Prefs.with(yourContext, "CUSTOM_NAME", true).readInt(YOUR_KEY_VALUE);
 ```
 You can also set and retrieve `ordered String sets` and `unordered String sets`.
