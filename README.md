@@ -31,10 +31,19 @@ dependencies {
 
 Usage
 --
-
+This is the basic usage, you can read values (specifying a defualt value or not) and write values like so:
 ``` java
   Prefs.with(yourContext).readInt(YOUR_KEY_VALUE);
   Prefs.with(yourContext).readInt(YOUR_KEY_VALUE, defaultValue);
   
   Prefs.with(yourContext).writeInt(YOUR_KEY_VALUE, valueToStore);
 ```
+You can also specify a custom name for the preferences' name:
+``` java
+  Prefs.with(yourContext, "CUSTOM_NAME").readInt(YOUR_KEY_VALUE);
+```
+And force the re-instantiation of the Prefs instance:
+``` java
+  Prefs.with(yourContext, true).readInt(YOUR_KEY_VALUE);
+```
+You can also set and retrieve `ordered String sets` and `unordered String sets`.
