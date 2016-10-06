@@ -1,7 +1,7 @@
 # Prefs
 [![](https://jitpack.io/v/GrenderG/Prefs.svg)](https://jitpack.io/#GrenderG/Prefs) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Prefs-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/3570)
 
-Simple Android SharedPreferences wrapper.
+Simple Android `SharedPreferences` wrapper.
 
 Repository
 --
