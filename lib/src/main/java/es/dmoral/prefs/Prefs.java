@@ -17,7 +17,7 @@ public class Prefs {
     private static SharedPreferences sharedPreferences;
     private static Prefs prefsInstance;
 
-    private static final String preferencesName = "preferences";
+    private static final String PREFERENCES_NAME = "preferences";
     private static final String LENGTH = "_length";
 
     private static final String DEFAULT_STRING_VALUE = "";
@@ -28,12 +28,17 @@ public class Prefs {
     private static final boolean DEFAULT_BOOLEAN_VALUE = false;
 
     private Prefs(@NonNull Context context){
-        if (sharedPreferences == null) {
-            sharedPreferences = context.getApplicationContext().getSharedPreferences(
-                    preferencesName,
-                    Context.MODE_PRIVATE
+        sharedPreferences = context.getApplicationContext().getSharedPreferences(
+                PREFERENCES_NAME,
+                Context.MODE_PRIVATE
             );
-        }
+    }
+
+    private Prefs(@NonNull Context context, @NonNull String preferencesName){
+        sharedPreferences = context.getApplicationContext().getSharedPreferences(
+                preferencesName,
+                Context.MODE_PRIVATE
+        );
     }
 
     /**
@@ -43,6 +48,44 @@ public class Prefs {
     public static Prefs with(@NonNull Context context) {
         if (prefsInstance == null) {
             prefsInstance = new Prefs(context);
+        }
+        return prefsInstance;
+    }
+
+    /**
+     * @param context
+     * @param forceInstantiation
+     * @return Returns a 'Prefs' instance
+     */
+    public static Prefs with(@NonNull Context context, boolean forceInstantiation) {
+        if (forceInstantiation) {
+            prefsInstance = new Prefs(context);
+        }
+        return prefsInstance;
+    }
+
+    /**
+     * @param context
+     * @param preferencesName
+     * @return Returns a 'Prefs' instance
+     */
+    public static Prefs with(@NonNull Context context, @NonNull String preferencesName) {
+        if (prefsInstance == null) {
+            prefsInstance = new Prefs(context, preferencesName);
+        }
+        return prefsInstance;
+    }
+
+    /**
+     * @param context
+     * @param preferencesName
+     * @param forceInstantiation
+     * @return Returns a 'Prefs' instance
+     */
+    public static Prefs with(@NonNull Context context, @NonNull String preferencesName,
+                             boolean forceInstantiation) {
+        if (forceInstantiation) {
+            prefsInstance = new Prefs(context, preferencesName);
         }
         return prefsInstance;
     }
