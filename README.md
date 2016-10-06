@@ -38,7 +38,6 @@ This is the basic usage, you can read values (specifying a defualt value or not)
   
   Prefs.with(yourContext).writeInt(YOUR_KEY_VALUE, valueToStore);
 ```
-**WAIT FOR THIS UNTIL JITPACK.IO UPDATES THEIR BUILD TOOLS TO 24.0.3, UNTIL THAT YOU CAN STILL USE v1.1**
 You can also specify a custom name for the preferences' name:
 ``` java
   Prefs.with(yourContext, "CUSTOM_NAME").readInt(YOUR_KEY_VALUE);
