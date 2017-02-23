@@ -31,7 +31,7 @@ dependencies {
 
 Usage
 --
-This is the basic usage, you can read values (specifying a defualt value or not) and write values like so:
+This is the basic usage, you can read values (specifying a default value or not) and write values like so:
 ``` java
   Prefs.with(yourContext).readInt(YOUR_KEY_VALUE);
   Prefs.with(yourContext).readInt(YOUR_KEY_VALUE, defaultValue);
