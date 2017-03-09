@@ -14,12 +14,7 @@ import java.util.Set;
  */
 public class Prefs {
 
-    private static SharedPreferences sharedPreferences;
-    private static Prefs prefsInstance;
-
-    private static final String PREFERENCES_NAME = "preferences";
     private static final String LENGTH = "_length";
-
     private static final String DEFAULT_STRING_VALUE = "";
     private static final int DEFAULT_INT_VALUE = -1;
     private static final double DEFAULT_DOUBLE_VALUE = -1d;
@@ -27,14 +22,17 @@ public class Prefs {
     private static final long DEFAULT_LONG_VALUE = -1L;
     private static final boolean DEFAULT_BOOLEAN_VALUE = false;
 
-    private Prefs(@NonNull Context context){
+    private static SharedPreferences sharedPreferences;
+    private static Prefs prefsInstance;
+
+    private Prefs(@NonNull Context context) {
         sharedPreferences = context.getApplicationContext().getSharedPreferences(
-                PREFERENCES_NAME,
+                context.getPackageName() + "_preferences",
                 Context.MODE_PRIVATE
-            );
+        );
     }
 
-    private Prefs(@NonNull Context context, @NonNull String preferencesName){
+    private Prefs(@NonNull Context context, @NonNull String preferencesName) {
         sharedPreferences = context.getApplicationContext().getSharedPreferences(
                 preferencesName,
                 Context.MODE_PRIVATE
@@ -344,7 +342,7 @@ public class Prefs {
                 }
             }
         }
-        sharedPreferences.edit().remove(key);
+        sharedPreferences.edit().remove(key).apply();
     }
 
     /**
