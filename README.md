@@ -1,3 +1,5 @@
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R21LO82)
+
 # Prefs
 [![](https://jitpack.io/v/GrenderG/Prefs.svg)](https://jitpack.io/#GrenderG/Prefs) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Prefs-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/3570)
 
